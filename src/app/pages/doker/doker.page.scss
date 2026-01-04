@@ -1,0 +1,167 @@
+:host {
+  --background: transparent !important;
+  background: radial-gradient(circle at center, #2b0000 0%, #000000 100%) !important;
+  display: block;
+  height: 100%;
+}
+
+ion-header {
+  ion-toolbar {
+    --background: transparent;
+    --border-width: 0;
+    --color: #fff;
+    padding-top: 10px;
+    
+    ion-title {
+      font-weight: 900;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      span { color: #ff0000; font-weight: 300; }
+    }
+  }
+}
+
+ion-content {
+  --background: transparent !important;
+  --padding-top: 20px;
+
+  &::part(scroll) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.main-wrapper {
+  width: 90%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-title {
+  color: #666;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+  border-left: 2px solid #ff0000;
+  padding-left: 10px;
+}
+
+.cmd-card-docker {
+  background: rgba(15, 15, 15, 0.95);
+  border: 1px solid rgba(255, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: 0.2s;
+
+  &:active {
+    background: rgba(255, 0, 0, 0.15);
+    transform: scale(0.98);
+  }
+
+  .card-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    ion-icon {
+      font-size: 1.8rem;
+      filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.3));
+    }
+
+    .text-group {
+      display: flex;
+      flex-direction: column;
+
+      .name {
+        color: #fff;
+        font-weight: bold;
+        font-size: 0.9rem;
+        letter-spacing: 0.5px;
+      }
+
+      .image {
+        color: #555;
+        font-size: 0.6rem;
+        font-family: monospace;
+        margin-bottom: 5px;
+      }
+
+      ion-badge {
+        width: fit-content;
+        font-size: 0.55rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      }
+    }
+  }
+
+  ion-button {
+    --color: #3ddc84;
+    font-size: 1.5rem;
+    
+    &.is-running {
+      --color: #ff0000;
+    }
+  }
+}
+
+.status-container {
+  text-align: center;
+  margin-top: 80px;
+  color: #444;
+
+  ion-spinner { --color: #ff0000; }
+  p { font-size: 0.8rem; margin-top: 15px; letter-spacing: 1px; }
+
+  &.empty {
+    .logo-glow-small {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      border: 1px solid #ff0000;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      ion-icon { font-size: 2.5rem; color: #ff0000; opacity: 0.8; }
+    }
+  }
+}
+
+.rotating {
+  animation: rotate 1.5s linear infinite;
+  color: #ff0000;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+::ng-deep .custom-alert {
+  --background: #0f0f0f;
+  --header-color: #ff0000;
+  --message-color: #fff;
+  border: 1px solid rgba(255, 0, 0, 0.5);
+
+  .alert-button {
+    color: #ff0000;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .alert-button-role-cancel {
+    color: #666;
+  }
+}

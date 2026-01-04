@@ -1,0 +1,67 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="abrirMenu()">
+        <ion-icon slot="icon-only" name="menu-outline" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>MONITOR <span>SISTEMA</span></ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="refreshStats()">
+        <ion-icon name="refresh-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="monitor-wrapper" *ngIf="stats">
+    
+    <div class="uptime-badge">UPTIME: {{ stats.uptime }}</div>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <div class="stat-card">
+            <div class="card-header">
+              <ion-icon name="hardware-chip-outline"></ion-icon>
+              <span>PROCESSADOR (CPU)</span>
+              <span class="value">{{ stats.cpuUsage }}%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="fill" [style.width.%]="stats.cpuUsage"></div>
+            </div>
+          </div>
+        </ion-col>
+
+        <ion-col size="12">
+          <div class="stat-card">
+            <div class="card-header">
+              <ion-icon name="speedometer-outline"></ion-icon>
+              <span>MEMÓRIA RAM</span>
+              <span class="value">{{ stats.memoryUsage }}%</span>
+            </div>
+            <div class="progress-bar memory">
+              <div class="fill" [style.width.%]="stats.memoryUsage"></div>
+            </div>
+            <div class="details">Livre: {{ stats.freeMemory }} / Total: {{ stats.totalMemory }}</div>
+          </div>
+        </ion-col>
+
+        <ion-col size="12">
+          <div class="stat-card">
+            <div class="card-header">
+              <ion-icon name="disc-outline"></ion-icon>
+              <span>ARMAZENAMENTO</span>
+              <span class="value">{{ stats.diskUsage }}%</span>
+            </div>
+            <div class="progress-bar disk">
+              <div class="fill" [style.width.%]="stats.diskUsage"></div>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+</ion-content>

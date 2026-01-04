@@ -1,0 +1,41 @@
+<ion-menu contentId="main-content" menuId="ultron-menu" side="start" type="overlay">
+  <ion-content style="--background: transparent !important; background: #000 !important;">
+    <div class="ultron-sidebar">
+      
+      <div class="sidebar-header">
+        <div class="logo-circle">
+          <img src="assets/logo.jpg" alt="Ultron">
+        </div>
+        <div class="branding">
+          <h2>ULTRON<span>HUB</span></h2>
+          <p>SISTEMA OPERACIONAL</p>
+        </div>
+      </div>
+
+      <div class="menu-actions">
+        <div class="nav-btn" (click)="navegar('/home')">
+          <ion-icon name="grid-outline"></ion-icon>
+          <span>PAINEL DE CONTROLE</span>
+        </div>
+
+        <div class="nav-btn" (click)="navegar('/chat')">
+          <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+          <span>IA COMMAND</span>
+        </div>
+
+        <div class="nav-btn" (click)="navegar('/doker')">
+          <ion-icon name="cube-outline"></ion-icon>
+          <span>DOCKER MANAGER</span>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div class="nav-btn logout-btn" (click)="sair()">
+          <ion-icon name="log-out-outline"></ion-icon>
+          <span>ENCERRAR PROTOCOLO</span>
+        </div>
+      </div>
+
+    </div>
+  </ion-content>
+</ion-menu>

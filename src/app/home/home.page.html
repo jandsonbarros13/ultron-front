@@ -1,0 +1,61 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="abrirMenu()">
+        <ion-icon slot="icon-only" name="menu-outline" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>ULTRON<span>HUB</span></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="home-container">
+    
+    <div class="logo-glow">
+      <img src="assets/logo.jpg" alt="Ultron Logo">
+    </div>
+
+    <div class="header-section">
+      <h2>SISTEMA<span>ATIVO</span></h2>
+      <p>BEM-VINDO, OPERADOR PEDRO BARROS</p>
+    </div>
+
+    <div class="command-grid">
+      <div class="cmd-card" (click)="irParaChat('Oi Ultron, análise de sistema?')">
+        <ion-icon name="chatbubbles-outline"></ion-icon>
+        <span>IA PROCESSOR</span>
+      </div>
+
+      <div class="cmd-card" (click)="irParaSeletorWorkspace()">
+        <ion-icon name="logo-chrome"></ion-icon>
+        <span>CHROME BOT</span>
+      </div>
+
+      <div class="cmd-card" (click)="irParaDoker()">
+        <ion-icon name="cube-outline"></ion-icon>
+        <span>DOCKER CORE</span>
+      </div>
+
+      <div class="cmd-card" (click)="irParaEditor()">
+        <ion-icon name="code-slash-outline"></ion-icon>
+        <span>EDITOR PRO</span>
+      </div>
+
+      <div class="cmd-card" (click)="irParaMonitor()">
+        <ion-icon name="stats-chart-outline"></ion-icon>
+        <span>MONITOR</span>
+      </div>
+
+      <div class="cmd-card shutdown" (click)="confirmarDesligamento()">
+        <ion-icon name="power-outline"></ion-icon>
+        <span>POWER MGMT</span>
+      </div>
+    </div>
+
+    <ion-button fill="clear" class="btn-logout" (click)="encerrarSessao()">
+      SAIR DO APLICATIVO
+    </ion-button>
+
+  </div>
+</ion-content>

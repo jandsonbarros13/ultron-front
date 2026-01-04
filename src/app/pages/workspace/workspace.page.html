@@ -1,0 +1,90 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="black">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>WORKSPACE<span>SELECTOR</span></ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="abrirModal(true)">
+        <ion-icon name="add-outline" slot="icon-only" color="danger"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="workspace-container">
+    <div class="info-header select-all-row">
+      <p>PROTOCOLOS DE NAVEGAÇÃO</p>
+      <div class="toggle-all">
+        <small>MARCAR TODOS</small>
+        <ion-checkbox (ionChange)="marcarTodos($event)"></ion-checkbox>
+      </div>
+    </div>
+
+    <ion-list lines="none" class="sites-list">
+      <ion-item-sliding *ngFor="let site of sites" class="site-sliding">
+        
+        <ion-item-options side="start">
+          <ion-item-option color="success" (click)="ativarUnico(site.url)">
+            <ion-icon name="rocket-outline" slot="icon-only"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+
+        <ion-item class="site-item">
+          <ion-icon [name]="site.icon" slot="start"></ion-icon>
+          <ion-label>
+            <h2>{{ site.nome }}</h2>
+            <p>{{ site.url }}</p>
+          </ion-label>
+          <ion-checkbox slot="end" [(ngModel)]="site.selected" (ionChange)="toggleSite(site)"></ion-checkbox>
+        </ion-item>
+
+        <ion-item-options side="end">
+          <ion-item-option color="primary" (click)="prepararEdicao(site)">
+            <ion-icon name="pencil-outline" slot="icon-only"></ion-icon>
+          </ion-item-option>
+          <ion-item-option color="danger" (click)="deletarSite(site.id)">
+            <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
+    <div class="action-footer">
+      <ion-button expand="block" class="btn-activate" (click)="iniciarWorkspace()">
+        <ion-icon name="flash-outline" slot="start"></ion-icon>
+        ATIVAR AMBIENTE SELECIONADO
+      </ion-button>
+    </div>
+  </div>
+
+  <ion-modal [isOpen]="isModalOpen" (didDismiss)="abrirModal(false)">
+    <ng-template>
+      <ion-header class="ion-no-border">
+        <ion-toolbar color="black">
+          <ion-title>{{ novoSite.id ? 'EDITAR' : 'NOVO' }} <span>PROTOCOLO</span></ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="abrirModal(false)">FECHAR</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="modal-ultron">
+        <div class="ultron-card">
+          <div class="input-group">
+            <input type="text" [(ngModel)]="novoSite.nome" placeholder="NOME DO SITE">
+          </div>
+          <div class="input-group">
+            <input type="text" [(ngModel)]="novoSite.url" placeholder="URL (https://...)">
+          </div>
+          <div class="input-group">
+            <input type="text" [(ngModel)]="novoSite.icon" placeholder="ÍCONE (ex: logo-whatsapp)">
+          </div>
+          <button class="btn-action" (click)="salvarNovoSite()">
+            {{ novoSite.id ? 'ATUALIZAR' : 'CADASTRAR' }} NO POSTGRES
+          </button>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>

@@ -1,0 +1,44 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="danger"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>ULTRON<span>IA</span></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="chat-bg">
+  <div class="message-wrapper">
+    <div *ngFor="let m of mensagens" [ngClass]="m.role === 'user' ? 'user-box' : 'ultron-box'">
+      <div class="bubble">
+        <div class="icon-header">
+          <ion-icon [name]="m.role === 'user' ? 'person-outline' : 'hardware-chip-outline'"></ion-icon>
+          <span>{{ m.role === 'user' ? 'OPERADOR' : 'ULTRON' }}</span>
+        </div>
+        <p>{{ m.text }}</p>
+      </div>
+    </div>
+    <div *ngIf="carregando" class="ultron-box loading">
+      <div class="bubble">
+        <ion-spinner name="crescent" color="danger"></ion-spinner>
+        <span>PROCESSANDO...</span>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <div class="input-area">
+    <div class="input-container">
+      <input 
+        type="text" 
+        placeholder="ENVIAR COMANDO..." 
+        [(ngModel)]="pergunta" 
+        (keyup.enter)="enviar()"
+        [disabled]="carregando">
+      <button (click)="enviar()" [disabled]="carregando">
+        <ion-icon name="send-outline"></ion-icon>
+      </button>
+    </div>
+  </div>
+</ion-footer>

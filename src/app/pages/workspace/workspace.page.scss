@@ -1,0 +1,73 @@
+$ultron-red: #ff0000;
+$ultron-dark: #000000;
+
+.workspace-container {
+  padding: 16px;
+  background: $ultron-dark;
+  min-height: 100%;
+}
+
+.select-all-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: rgba($ultron-red, 0.05);
+  border: 1px solid rgba($ultron-red, 0.2);
+  border-radius: 8px;
+  margin-bottom: 15px;
+  p { color: $ultron-red; font-weight: bold; font-size: 0.8rem; margin: 0; }
+  .toggle-all { display: flex; align-items: center; gap: 8px; small { color: #888; } }
+}
+
+.site-card {
+  background: #1a1a1a;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  ion-item { --background: transparent; --color: white; ion-icon { color: $ultron-red; } }
+}
+
+.btn-activate {
+  --background: #{$ultron-red};
+  --box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+  font-weight: bold;
+  height: 50px;
+  margin-top: 20px;
+}
+
+.modal-ultron {
+  --background: #{$ultron-dark};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  .ultron-card {
+    background: #111;
+    padding: 20px;
+    border: 1px solid $ultron-red;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255,0,0,0.2);
+  }
+}
+
+.input-group {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid #333;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  padding: 10px;
+  input { background: transparent; border: none; color: white; width: 100%; outline: none; }
+}
+
+.btn-action {
+  background: $ultron-red;
+  color: white;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+ion-title span { color: $ultron-red; }

@@ -1,0 +1,7 @@
+{
+  "name": "ultron",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

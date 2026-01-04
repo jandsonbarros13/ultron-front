@@ -1,0 +1,58 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="abrirMenu()" color="light">
+        <ion-icon slot="icon-only" name="menu-outline" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>DOCKER <span>MANAGER</span></ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="carregarContainers()" [disabled]="loading">
+        <ion-icon name="refresh-outline" slot="icon-only" [class.rotating]="loading"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="carregarContainers($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="main-wrapper">
+    <div class="section-title">CONTAINERS NO LINUX</div>
+
+    <div *ngIf="loading && containers.length === 0" class="status-container">
+      <ion-spinner name="crescent"></ion-spinner>
+      <p>Sincronizando com Docker Socket...</p>
+    </div>
+
+    <div class="container-list">
+      <div *ngFor="let c of containers" class="cmd-card-docker">
+        <div class="card-info">
+          <ion-icon name="cube-outline" 
+                    [style.color]="c.state === 'running' ? '#3ddc84' : '#ff0000'"></ion-icon>
+          <div class="text-group">
+            <span class="name">{{ c.name }}</span>
+            <span class="image">{{ c.image }}</span>
+            <ion-badge [color]="c.state === 'running' ? 'success' : 'danger'">
+              {{ c.status }}
+            </ion-badge>
+          </div>
+        </div>
+
+        <ion-button fill="clear" (click)="toggleAction(c)" 
+                    [class.is-running]="c.state === 'running'">
+          <ion-icon [name]="c.state === 'running' ? 'stop-outline' : 'play-outline'"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+
+    <div *ngIf="containers.length === 0 && !loading" class="status-container empty">
+      <div class="logo-glow-small">
+         <ion-icon name="cube-outline"></ion-icon>
+      </div>
+      <p>Nenhum container detectado.</p>
+    </div>
+  </div>
+</ion-content>

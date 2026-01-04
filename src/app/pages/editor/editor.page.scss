@@ -1,0 +1,143 @@
+$ultron-red: #ff0000;
+$ultron-dark: #000000;
+
+ion-content {
+  --background: #{$ultron-dark};
+}
+
+.workspace-container {
+  padding: 16px;
+  background: $ultron-dark;
+  min-height: 100%;
+}
+
+ion-title {
+  font-weight: 900;
+  letter-spacing: 2px;
+  span { color: $ultron-red; }
+}
+
+.section-title {
+  padding: 10px 0;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: $ultron-red;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.select-all-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: rgba($ultron-red, 0.05);
+  border: 1px solid rgba($ultron-red, 0.2);
+  border-radius: 8px;
+  margin-bottom: 15px;
+  p { color: $ultron-red; font-weight: bold; font-size: 0.8rem; margin: 0; }
+}
+
+.site-card {
+  background: #1a1a1a;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  overflow: hidden;
+
+  ion-item {
+    --background: transparent;
+    --color: white;
+    --padding-start: 10px;
+    
+    ion-icon { 
+      color: $ultron-red; 
+    }
+
+    h2 { font-weight: bold; font-size: 1rem; }
+    p { color: #888; font-size: 0.75rem; }
+  }
+}
+
+.footer-action {
+  padding: 16px;
+  background: $ultron-dark;
+}
+
+.btn-activate {
+  --background: #{$ultron-red};
+  --color: white;
+  --box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+  font-weight: bold;
+  height: 50px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+// Estilo do Modal conforme seu padrão
+.modal-content {
+  background: $ultron-dark;
+  height: 100%;
+  padding: 20px;
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba($ultron-red, 0.3);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    h3 { color: white; margin: 0; font-weight: bold; span { color: $ultron-red; } }
+  }
+}
+
+.input-group {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid #333;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  padding: 10px;
+  
+  label {
+    display: block;
+    font-size: 0.65rem;
+    color: $ultron-red;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  input, select {
+    background: transparent;
+    border: none;
+    color: white;
+    width: 100%;
+    outline: none;
+    font-size: 0.9rem;
+    
+    option { background: #1a1a1a; }
+  }
+}
+
+.btn-action {
+  background: $ultron-red;
+  color: white;
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
+.search-container {
+  display: flex;
+  gap: 8px;
+  .btn-search {
+    background: rgba($ultron-red, 0.1);
+    border: 1px solid $ultron-red;
+    color: $ultron-red;
+    padding: 0 15px;
+    border-radius: 5px;
+  }
+}

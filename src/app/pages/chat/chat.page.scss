@@ -1,0 +1,106 @@
+ion-toolbar {
+  --background: transparent !important;
+  --min-height: 60px;
+  ion-title {
+    color: #fff; font-weight: 900; letter-spacing: 3px;
+    span { color: #ff0000; }
+  }
+}
+
+.chat-bg {
+  --background: transparent !important;
+  background: radial-gradient(circle at center, #1a0000 0%, #000000 100%) !important;
+}
+
+.message-wrapper {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* BALÕES DE MENSAGEM */
+.user-box, .ultron-box {
+  display: flex;
+  width: 100%;
+}
+
+.user-box { justify-content: flex-end; }
+.ultron-box { justify-content: flex-start; }
+
+.bubble {
+  max-width: 85%;
+  padding: 15px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  
+  .icon-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.6rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+    ion-icon { font-size: 0.9rem; }
+  }
+
+  p { margin: 0; font-size: 0.9rem; line-height: 1.4; color: #fff; }
+}
+
+/* Estilo do Operador (Direita) */
+.user-box .bubble {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  .icon-header { color: #888; }
+}
+
+/* Estilo do Ultron (Esquerda) */
+.ultron-box .bubble {
+  background: rgba(255, 0, 0, 0.05);
+  border: 1px solid rgba(255, 0, 0, 0.2);
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.1);
+  .icon-header { color: #ff0000; }
+}
+
+/* ÁREA DE INPUT NO RODAPÉ */
+.input-area {
+  background: #000;
+  padding: 15px 20px 30px;
+  
+  .input-container {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 5px 15px;
+
+    input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: #fff;
+      padding: 12px 0;
+      outline: none;
+      font-size: 0.9rem;
+      &::placeholder { color: #444; }
+    }
+
+    button {
+      background: transparent;
+      border: none;
+      ion-icon { color: #ff0000; font-size: 1.5rem; cursor: pointer; }
+      &:disabled { opacity: 0.3; }
+    }
+  }
+}
+
+.loading {
+  .bubble {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    span { font-size: 0.7rem; color: #ff0000; font-weight: bold; letter-spacing: 1px; }
+  }
+}

@@ -1,0 +1,159 @@
+:host {
+  --background: transparent !important;
+  background: radial-gradient(circle at center, #1a0000 0%, #000000 100%) !important;
+  display: block;
+  height: 100%;
+}
+
+ion-header {
+  ion-toolbar {
+    --background: transparent;
+    --border-width: 0;
+    --color: #fff;
+    padding-top: 10px;
+
+    ion-title {
+      font-weight: 900;
+      letter-spacing: 5px;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 1.2rem;
+      
+      span {
+        color: #ff0000;
+        font-weight: 300;
+        text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+      }
+    }
+
+    ion-button {
+      --color: #fff;
+      font-size: 1.8rem;
+    }
+  }
+}
+
+ion-content {
+  --background: transparent !important;
+  
+  &::part(scroll) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.home-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.logo-glow {
+  margin-bottom: 30px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 0, 0, 0.4);
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
+    animation: pulse 3s infinite ease-in-out;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    background: radial-gradient(circle, rgba(255, 0, 0, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: -1;
+  }
+}
+
+.header-section {
+  text-align: center;
+  margin-bottom: 40px;
+
+  h2 {
+    color: #fff;
+    font-weight: 900;
+    letter-spacing: 4px;
+    margin: 0;
+    font-size: 1.8rem;
+
+    span {
+      color: #ff0000;
+      margin-left: 10px;
+    }
+  }
+
+  p {
+    color: #666;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    margin-top: 5px;
+    font-weight: bold;
+  }
+}
+
+.command-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.cmd-card {
+  background: rgba(15, 15, 15, 0.8);
+  border: 1px solid rgba(255, 0, 0, 0.2);
+  border-radius: 15px;
+  padding: 25px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(10px);
+
+  ion-icon {
+    font-size: 2.2rem;
+    color: #ff0000;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.5));
+  }
+
+  span {
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  &:active {
+    transform: scale(0.95);
+    background: rgba(255, 0, 0, 0.1);
+    border-color: #ff0000;
+  }
+
+  &.shutdown {
+    border-color: rgba(255, 0, 0, 0.5);
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 0, 0, 0.4); }
+  50% { transform: scale(1.05); box-shadow: 0 0 40px rgba(255, 0, 0, 0.7); }
+  100% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 0, 0, 0.4); }
+}

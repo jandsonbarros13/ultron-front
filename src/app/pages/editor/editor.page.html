@@ -1,0 +1,91 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>MEUS <span>EDITORES</span></ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="isGestorOpen = true">
+        <ion-icon name="settings-outline" slot="icon-only" style="color: #ff0000;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="workspace-container" style="padding: 20px;">
+    
+    <div class="section-title" style="color: #666; font-size: 11px; margin-bottom: 20px; letter-spacing: 2px; font-weight: bold;">
+      SELECIONE A FERRAMENTA
+    </div>
+
+    <ion-list lines="none" style="background: transparent;">
+      <ion-item-sliding *ngFor="let ed of editoresElite">
+        <ion-item (click)="abrirSomenteEditor(ed)" class="site-card" style="margin-bottom: 12px; --border-radius: 12px; --background: #1a1a1a;">
+          <ion-icon [name]="ed.icon" slot="start" [style.color]="ed.color" style="font-size: 24px;"></ion-icon>
+          <ion-label>
+            <h2 style="font-weight: bold; color: white;">{{ ed.nome }}</h2>
+            <p style="font-size: 10px; color: #888;">Toque para abrir ou deslize para projetos</p>
+          </ion-label>
+          <ion-icon name="open-outline" slot="end" style="font-size: 14px; color: #333;"></ion-icon>
+        </ion-item>
+
+        <ion-item-options side="end">
+          <ion-item-option (click)="selecionarProjetoParaEditor(ed)" style="background: #ff0000; color: white; padding: 0 20px; border-radius: 0 12px 12px 0;">
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+              <ion-icon name="folder-outline" style="font-size: 22px;"></ion-icon>
+              <span style="font-size: 9px; font-weight: bold;">PROJETOS</span>
+            </div>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+
+  <ion-modal [isOpen]="isGestorOpen" (didDismiss)="isGestorOpen = false">
+    <ng-template>
+      <div style="background: #000; height: 100%; display: flex; flex-direction: column;">
+        <div style="padding: 20px; border-bottom: 1px solid #222; display: flex; justify-content: space-between; align-items: center;">
+          <h3 style="color: white; margin: 0; letter-spacing: 2px;">GESTOR DE <span style="color: #ff0000;">PROJETOS</span></h3>
+          <ion-button fill="clear" (click)="isGestorOpen = false" color="light">FECHAR</ion-button>
+        </div>
+
+        <div style="padding: 20px; background: #0a0a0a; border-bottom: 1px solid #222;">
+          <label style="color: #666; font-size: 10px; font-weight: bold; letter-spacing: 1px;">CADASTRAR VÍNCULO</label>
+          
+          <input type="text" [(ngModel)]="novoProjeto.nome" placeholder="Nome do Projeto" 
+                 style="width: 100%; background: #111; border: 1px solid #333; color: white; padding: 12px; border-radius: 8px; margin-top: 10px; margin-bottom: 10px; outline: none;">
+
+          <div style="display: flex; gap: 10px;">
+            <input type="text" [(ngModel)]="novoProjeto.caminho" placeholder="Caminho no Linux..." 
+                   style="flex: 1; background: #111; border: 1px solid #333; color: white; padding: 12px; border-radius: 8px; outline: none;">
+            <button (click)="abrirExplorador()" style="background: #ff0000; border: none; border-radius: 8px; padding: 0 15px; cursor: pointer;">
+              <ion-icon name="folder-open-outline" style="color: white; font-size: 20px;"></ion-icon>
+            </button>
+          </div>
+          
+          <button (click)="salvarProjetoNoBanco()" 
+                  style="width: 100%; background: #fff; color: #000; font-weight: bold; padding: 14px; border-radius: 8px; border: none; margin-top: 15px; cursor: pointer;">
+            SALVAR NO BANCO
+          </button>
+        </div>
+
+        <div style="flex: 1; overflow-y: auto; padding: 15px;">
+          <div style="color: #444; font-size: 10px; font-weight: bold; margin-bottom: 10px; letter-spacing: 1px;">VÍNCULOS ATIVOS</div>
+          <ion-list lines="none" style="background: transparent;">
+            <ion-item *ngFor="let proj of projetosVinculados" style="--background: #111; margin-bottom: 10px; --border-radius: 10px;">
+              <ion-icon name="folder-outline" slot="start" style="color: #ff0000;"></ion-icon>
+              <ion-label>
+                <h2 style="color: white; font-size: 14px; font-weight: bold;">{{ proj.nome }}</h2>
+                <p style="color: #555; font-size: 10px;">{{ proj.caminho }}</p>
+              </ion-label>
+              <ion-button slot="end" fill="clear" color="danger" (click)="deletarProjeto(proj.id)">
+                <ion-icon name="trash-outline"></ion-icon>
+              </ion-button>
+            </ion-item>
+          </ion-list>
+        </div>
+      </div>
+    </ng-template>
+  </ion-modal>
+</ion-content>
