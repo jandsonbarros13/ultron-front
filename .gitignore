@@ -1,0 +1,29 @@
+# Dependências
+node_modules/
+
+# Saídas de Build
+www/
+dist/
+.sourcemaps/
+.webpack/
+
+# Mobile (Capacitor/Cordova)
+platforms/
+plugins/
+android/
+ios/
+
+# IDEs e Sistema
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Variáveis de ambiente
+.env
+.angular/
